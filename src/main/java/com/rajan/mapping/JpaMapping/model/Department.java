@@ -1,21 +1,21 @@
 package com.rajan.mapping.JpaMapping.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by rajan on 7/7/17.
  */
 @Entity
+
 public class Department {
     @Id
     Integer id;
     String dept_name;
 
-    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "department",cascade = CascadeType.ALL)
     List<Student> Student;
 
     public List<Student> getStudent() {

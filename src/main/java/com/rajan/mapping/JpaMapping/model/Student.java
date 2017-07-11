@@ -1,12 +1,18 @@
 package com.rajan.mapping.JpaMapping.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
  * Created by rajan on 7/7/17.
- */@Entity
+ */
+@Entity
+
 public class Student {
     @Id
     Integer id;
@@ -14,6 +20,8 @@ public class Student {
     String city;
 
     @ManyToOne
+    @JsonIgnore
+   // @JoinColumn(name = "departmentid")
     Department department;
 
     public Department getDepartment() {
@@ -23,16 +31,6 @@ public class Student {
     public void setDepartment(Department department) {
         this.department = department;
     }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    String imagePath;
 
     public Integer getId() {
         return id;
